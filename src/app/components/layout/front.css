@@ -676,7 +676,7 @@ button:hover,
 .hubspot_custom_form .hs-submit .hs-button:hover {
   text-decoration: none;
 }
-/* 
+
 @font-face {
   font-display: swap;
   font-family: 'HelveticaNowDisplay';
@@ -700,7 +700,7 @@ button:hover,
     url(SuisseIntlMono.woff) format('woff');
   font-weight: 400;
   font-style: normal;
-} */
+}
 html {
   min-height: 100%;
   line-height: 1.6;
