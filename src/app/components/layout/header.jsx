@@ -1,7 +1,17 @@
 'use client';
 import './header.css';
+import { useEffect } from 'react';
 
 export default function Header() {
+  useEffect(() => {
+    const html = document.querySelector('html');
+    const menuModalInner = document.querySelector('.c-menu_modal_inner');
+    const burgerBtn = document.querySelector('.c-burger-button');
+    menuModalInner.classList.add('is-ready');
+    burgerBtn.addEventListener('click', () => {
+      html.classList.toggle('has-menu-open');
+    });
+  }, []);
   return (
     <>
       <header
