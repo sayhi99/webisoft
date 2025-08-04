@@ -25,8 +25,8 @@ export default function Header() {
         // 클릭된 요소가 메뉴 배경 영역 밖인지 확인
         if (
           !menuModal.contains(e.target) &&
-          !headerBar.contains(e.target) && 
-          !burgerBtn.contains(e.target) // 
+          !headerBar.contains(e.target) &&
+          !burgerBtn.contains(e.target) //
         ) {
           menu.classList.remove('is-ready');
           menu.classList.remove('is-active');
@@ -71,7 +71,6 @@ export default function Header() {
                 duration: 0.3,
                 ease: 'power2.out',
               });
-
             } else {
               // 닫기 애니메이션 - details 요소의 높이 제어
               const currentHeight = accordion.offsetHeight;
@@ -88,7 +87,6 @@ export default function Header() {
                 duration: 0.3,
                 ease: 'power2.in',
               });
-
             }
           }
         });
@@ -99,9 +97,6 @@ export default function Header() {
         attributes: true,
         attributeFilter: ['open'],
       });
-
-      
-
     });
   }, []);
   return (
