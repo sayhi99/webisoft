@@ -1,15 +1,107 @@
 'use client';
 import './header.css';
 import { useEffect } from 'react';
+import { gsap } from 'gsap';
 
 export default function Header() {
   useEffect(() => {
     const html = document.querySelector('html');
+    const menu = document.querySelector('.c-menu');
     const menuModalInner = document.querySelector('.c-menu_modal_inner');
     const burgerBtn = document.querySelector('.c-burger-button');
     menuModalInner.classList.add('is-ready');
     burgerBtn.addEventListener('click', () => {
       html.classList.toggle('has-menu-open');
+      menu.classList.toggle('is-active');
+      menu.classList.toggle('is-ready');
+    });
+
+    const menuModal = document.querySelector('.c-menu_modal');
+    const headerBar = document.querySelector('.c-header_bar');
+
+    document.addEventListener('click', (e) => {
+      // 메뉴가 열려있을 때만 체크
+      if (menu.classList.contains('is-active')) {
+        // 클릭된 요소가 메뉴 배경 영역 밖인지 확인
+        if (
+          !menuModal.contains(e.target) &&
+          !headerBar.contains(e.target) && 
+          !burgerBtn.contains(e.target) // 
+        ) {
+          menu.classList.remove('is-ready');
+          menu.classList.remove('is-active');
+          html.classList.remove('has-menu-open');
+        } else {
+        }
+      }
+    });
+
+    // GSAP를 사용한 아코디언 애니메이션
+    const accordionSummaries = document.querySelectorAll(
+      '.c-menu-accordion_summary'
+    );
+
+    accordionSummaries.forEach((summary) => {
+      const accordion = summary.closest('.c-menu-accordion');
+      const content = accordion.querySelector('.c-menu-accordion_content');
+
+      // open 속성 변화 감지
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.type === 'attributes' &&
+            mutation.attributeName === 'open'
+          ) {
+            const isOpen = accordion.hasAttribute('open');
+
+            if (isOpen) {
+              // 열기 애니메이션 - details 요소의 높이 계산
+              const summaryHeight = summary.offsetHeight;
+              const contentHeight = content.scrollHeight;
+              const totalHeight = summaryHeight + contentHeight;
+
+              gsap.to(accordion, {
+                height: totalHeight,
+                duration: 0.3,
+                ease: 'power2.out',
+              });
+
+              gsap.to(content, {
+                // opacity: 1,
+                duration: 0.3,
+                ease: 'power2.out',
+              });
+
+            } else {
+              // 닫기 애니메이션 - details 요소의 높이 제어
+              const currentHeight = accordion.offsetHeight;
+              gsap.set(accordion, { height: currentHeight });
+
+              gsap.to(accordion, {
+                height: summary.offsetHeight,
+                duration: 0.3,
+                ease: 'power2.in',
+              });
+
+              gsap.to(content, {
+                // opacity: 0,
+                duration: 0.3,
+                ease: 'power2.in',
+              });
+
+            }
+          }
+        });
+      });
+
+      // open 속성 변화 감지 시작
+      observer.observe(accordion, {
+        attributes: true,
+        attributeFilter: ['open'],
+      });
+
+      
+
     });
   }, []);
   return (
