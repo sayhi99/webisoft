@@ -2,6 +2,7 @@
 import './header.css';
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Header() {
   useEffect(() => {
@@ -35,7 +36,9 @@ export default function Header() {
         }
       }
     });
+  }, []);
 
+  useEffect(() => {
     // GSAP를 사용한 아코디언 애니메이션
     const accordionSummaries = document.querySelectorAll(
       '.c-menu-accordion_summary'
@@ -99,6 +102,33 @@ export default function Header() {
       });
     });
   }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ScrollTrigger 설정
+    ScrollTrigger.create({
+      trigger: '.c-reveal',
+      start: 'top+=100 top',
+      scrub: true,
+      markers: true,
+      onUpdate: (self) => {
+        if (self.progress > 0) {
+          html.classList.add('has-scrolled');
+        } else {
+          html.classList.remove('has-scrolled');
+        }
+      },
+    });
+  }, []);
+
+  // text scramble
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrambleTextPlugin);
+    
+  }, []);
+
   return (
     <>
       <header

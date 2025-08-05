@@ -2402,7 +2402,7 @@ export default function HomePage() {
                           aria-controls="tabpanel-tab-131412"
                           aria-selected="false"
                           data-scramble-hover=""
-                          tabindex="-1"
+                          tabIndex="-1"
                         >
                           <span
                             className="c-button_label"
@@ -2420,7 +2420,7 @@ export default function HomePage() {
                           aria-controls="tabpanel-tab-131416"
                           aria-selected="false"
                           data-scramble-hover=""
-                          tabindex="-1"
+                          tabIndex="-1"
                         >
                           <span
                             className="c-button_label"
@@ -2866,7 +2866,7 @@ export default function HomePage() {
                       aria-label="I was truly impressed by their level of flexibility, professionalism,
  and dedication when it came to tackling the workload. Their commitment to the task at hand, coupled with their serious approach, truly stood out to me."
                     >
-                      <div
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -2875,7 +2875,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -2883,7 +2883,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2893,10 +2893,10 @@ export default function HomePage() {
                             }}
                           >
                             I
-                          </div>
-                        </div>
-                      </div>
-                      <div
+                          </span>
+                        </span>
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -2905,7 +2905,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -2913,7 +2913,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2923,8 +2923,8 @@ export default function HomePage() {
                             }}
                           >
                             w
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2934,8 +2934,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2945,10 +2945,10 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                        </div>
-                      </div>
-                      <div
+                          </span>
+                        </span>
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -2957,7 +2957,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -2965,7 +2965,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2975,8 +2975,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2986,8 +2986,8 @@ export default function HomePage() {
                             }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -2997,8 +2997,8 @@ export default function HomePage() {
                             }}
                           >
                             u
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3008,8 +3008,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3019,10 +3019,10 @@ export default function HomePage() {
                             }}
                           >
                             y
-                          </div>
-                        </div>
-                      </div>
-                      <div
+                          </span>
+                        </span>
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3031,7 +3031,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3039,7 +3039,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3049,8 +3049,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3060,8 +3060,8 @@ export default function HomePage() {
                             }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3071,8 +3071,8 @@ export default function HomePage() {
                             }}
                           >
                             p
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3082,8 +3082,8 @@ export default function HomePage() {
                             }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3093,8 +3093,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3104,8 +3104,8 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3115,8 +3115,8 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3126,8 +3126,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3137,10 +3137,10 @@ export default function HomePage() {
                             }}
                           >
                             d
-                          </div>
-                        </div>
-                      </div>
-                      <div
+                          </span>
+                        </span>
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3149,7 +3149,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3157,7 +3157,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3167,8 +3167,8 @@ export default function HomePage() {
                             }}
                           >
                             b
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3178,10 +3178,10 @@ export default function HomePage() {
                             }}
                           >
                             y
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3190,7 +3190,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3198,7 +3198,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3208,8 +3208,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3219,8 +3219,8 @@ export default function HomePage() {
                             }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3230,8 +3230,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3241,8 +3241,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3252,10 +3252,10 @@ export default function HomePage() {
                             }}
                           >
                             r
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3264,7 +3264,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3272,7 +3272,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3282,8 +3282,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3293,8 +3293,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3304,8 +3304,8 @@ export default function HomePage() {
                             }}
                           >
                             v
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3315,8 +3315,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3326,10 +3326,10 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3338,7 +3338,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3346,7 +3346,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3356,8 +3356,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3367,10 +3367,10 @@ export default function HomePage() {
                             }}
                           >
                             f
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3379,7 +3379,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3387,7 +3387,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3397,8 +3397,8 @@ export default function HomePage() {
                             }}
                           >
                             f
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3408,8 +3408,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3419,8 +3419,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3430,8 +3430,8 @@ export default function HomePage() {
                             }}
                           >
                             x
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3441,8 +3441,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3452,8 +3452,8 @@ export default function HomePage() {
                             }}
                           >
                             b
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3463,8 +3463,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3474,8 +3474,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3485,8 +3485,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3496,8 +3496,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3507,8 +3507,8 @@ export default function HomePage() {
                             }}
                           >
                             y
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3518,10 +3518,10 @@ export default function HomePage() {
                             }}
                           >
                             ,
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3530,7 +3530,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3538,7 +3538,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3548,8 +3548,8 @@ export default function HomePage() {
                             }}
                           >
                             p
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3559,8 +3559,8 @@ export default function HomePage() {
                             }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3570,8 +3570,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3581,8 +3581,8 @@ export default function HomePage() {
                             }}
                           >
                             f
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3592,8 +3592,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3603,8 +3603,8 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3614,8 +3614,8 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3625,8 +3625,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3636,8 +3636,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3647,8 +3647,8 @@ export default function HomePage() {
                             }}
                           >
                             n
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3658,8 +3658,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3669,8 +3669,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3680,8 +3680,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3691,8 +3691,8 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3702,8 +3702,8 @@ export default function HomePage() {
                             }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3713,10 +3713,10 @@ export default function HomePage() {
                             }}
                           >
                             ,
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3725,7 +3725,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3733,7 +3733,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3743,8 +3743,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3754,8 +3754,8 @@ export default function HomePage() {
                             }}
                           >
                             n
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3765,10 +3765,10 @@ export default function HomePage() {
                             }}
                           >
                             d
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3777,7 +3777,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3785,7 +3785,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3795,8 +3795,8 @@ export default function HomePage() {
                             }}
                           >
                             d
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3806,8 +3806,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3817,8 +3817,8 @@ export default function HomePage() {
                             }}
                           >
                             d
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3828,8 +3828,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3839,8 +3839,8 @@ export default function HomePage() {
                             }}
                           >
                             c
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3850,8 +3850,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3861,8 +3861,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3872,8 +3872,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3883,8 +3883,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3894,10 +3894,10 @@ export default function HomePage() {
                             }}
                           >
                             n
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3906,7 +3906,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3914,7 +3914,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3924,8 +3924,8 @@ export default function HomePage() {
                             }}
                           >
                             w
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3935,8 +3935,8 @@ export default function HomePage() {
                             }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3946,8 +3946,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3957,10 +3957,10 @@ export default function HomePage() {
                             }}
                           >
                             n
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -3969,7 +3969,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -3977,7 +3977,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3987,8 +3987,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -3998,10 +3998,10 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4010,7 +4010,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4018,7 +4018,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4028,8 +4028,8 @@ export default function HomePage() {
                             }}
                           >
                             c
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4039,8 +4039,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4050,8 +4050,8 @@ export default function HomePage() {
                             }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4061,10 +4061,10 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4073,7 +4073,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4081,7 +4081,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4091,8 +4091,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4102,10 +4102,10 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4114,7 +4114,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4122,7 +4122,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4132,8 +4132,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4143,8 +4143,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4154,8 +4154,8 @@ export default function HomePage() {
                             }}
                           >
                             c
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4165,8 +4165,8 @@ export default function HomePage() {
                             }}
                           >
                             k
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4176,8 +4176,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4187,8 +4187,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4198,8 +4198,8 @@ export default function HomePage() {
                             }}
                           >
                             n
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4209,10 +4209,10 @@ export default function HomePage() {
                             }}
                           >
                             g
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4221,7 +4221,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4229,7 +4229,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4239,8 +4239,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4250,8 +4250,8 @@ export default function HomePage() {
                             }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4261,10 +4261,10 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4273,7 +4273,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4281,7 +4281,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4291,8 +4291,8 @@ export default function HomePage() {
                             }}
                           >
                             w
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4302,8 +4302,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4313,8 +4313,8 @@ export default function HomePage() {
                             }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4324,8 +4324,8 @@ export default function HomePage() {
                             }}
                           >
                             k
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4335,8 +4335,8 @@ export default function HomePage() {
                             }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4346,8 +4346,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4357,8 +4357,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4368,8 +4368,8 @@ export default function HomePage() {
                             }}
                           >
                             d
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4379,10 +4379,10 @@ export default function HomePage() {
                             }}
                           >
                             .
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4391,7 +4391,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4399,7 +4399,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4409,8 +4409,8 @@ export default function HomePage() {
                             }}
                           >
                             T
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4420,8 +4420,8 @@ export default function HomePage() {
                             }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4431,8 +4431,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4442,8 +4442,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4453,10 +4453,10 @@ export default function HomePage() {
                             }}
                           >
                             r
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4465,7 +4465,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4473,7 +4473,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4483,8 +4483,8 @@ export default function HomePage() {
                             }}
                           >
                             c
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4494,8 +4494,8 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4505,8 +4505,8 @@ export default function HomePage() {
                             }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4516,8 +4516,8 @@ export default function HomePage() {
                             }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4527,8 +4527,8 @@ export default function HomePage() {
                             }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4538,8 +4538,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4549,8 +4549,8 @@ export default function HomePage() {
                             }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4560,8 +4560,8 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4571,8 +4571,8 @@ export default function HomePage() {
                             }}
                           >
                             n
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4582,10 +4582,10 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4594,7 +4594,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4602,7 +4602,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4612,8 +4612,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4623,10 +4623,10 @@ export default function HomePage() {
                             }}
                           >
                             o
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4635,7 +4635,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4643,7 +4643,7 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4653,8 +4653,8 @@ export default function HomePage() {
                             }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4664,8 +4664,8 @@ export default function HomePage() {
                             }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4675,10 +4675,10 @@ export default function HomePage() {
                             }}
                           >
                             e
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4687,7 +4687,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4695,14 +4695,18 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4712,8 +4716,8 @@ export default function HomePage() {
                             }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4723,8 +4727,8 @@ export default function HomePage() {
                             }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
                             style={{
@@ -4734,10 +4738,10 @@ export default function HomePage() {
                             }}
                           >
                             k
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
                         style={{
@@ -4746,7 +4750,7 @@ export default function HomePage() {
                           textAlign: 'start',
                         }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
                           style={{
@@ -4754,539 +4758,844 @@ export default function HomePage() {
                             display: 'inline',
                           }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             n
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             d
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             ,
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             c
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             u
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             p
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             d
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             w
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             h
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             r
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             i
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             u
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             s
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             p
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             p
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             a
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             c
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             h
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             ,
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             r
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             u
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             l
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             y
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             s
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             d
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             u
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             t
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             o
-                          </div>
-                        </div>{' '}
-                      </div>
-                      <div
+                          </span>
+                        </span>{' '}
+                      </span>
+                      <span
                         className="c-fadein-paragraph_line"
                         aria-hidden="true"
-                        style="position: relative; display: inline; text-align: start;"
+                        style={{
+                          position: 'relative',
+                          display: 'inline',
+                          textAlign: 'start',
+                        }}
                       >
-                        <div
+                        <span
                           className="c-fadein-paragraph_word"
                           aria-hidden="true"
-                          style="position: relative; display: inline;"
+                          style={{
+                            position: 'relative',
+                            display: 'inline',
+                          }}
                         >
-                          <div
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             m
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             e
-                          </div>
-                          <div
+                          </span>
+                          <span
                             className="c-fadein-paragraph_char"
                             aria-hidden="true"
-                            style="position: relative; display: inline; color: rgb(179, 178, 178);"
+                            style={{
+                              position: 'relative',
+                              display: 'inline',
+                              color: 'rgb(179, 178, 178)',
+                            }}
                           >
                             .
-                          </div>
-                        </div>
-                      </div>
+                          </span>
+                        </span>
+                      </span>
                     </p>
                   </div>
                 </blockquote>
@@ -5330,7 +5639,7 @@ export default function HomePage() {
                 data-scroll=""
                 data-scroll-offset="15%, 15%"
                 data-module-image-parallax="m104"
-                style="--parallax-scale: 1.1603839441535777;"
+                style={{ '--parallax-scale': '1.1603839441535777' }}
               >
                 <picture
                   className="c-image_inner"
@@ -5367,7 +5676,12 @@ export default function HomePage() {
                       <span
                         className="c-push-project_title_line_inner"
                         data-push-reveal="line"
-                        style="translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                        style={{
+                          translate: 'none',
+                          rotate: 'none',
+                          scale: 'none',
+                          transform: 'translate(0px, 100%)',
+                        }}
                       >
                         <span>We</span>
                         <span>Drive</span>
