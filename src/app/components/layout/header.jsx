@@ -3,6 +3,7 @@ import './header.css';
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 
 export default function Header() {
   useEffect(() => {
@@ -105,6 +106,7 @@ export default function Header() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const html = document.querySelector('html');
 
     // ScrollTrigger 설정
     ScrollTrigger.create({
@@ -123,10 +125,136 @@ export default function Header() {
   }, []);
 
   // text scramble
-
   useEffect(() => {
     gsap.registerPlugin(ScrambleTextPlugin);
-    
+
+    const scrambleTimelines = [];
+
+    const onMouseEnter = (e) => {
+      const targetScrambleTimelineObj = scrambleTimelines.filter(
+        (obj) => obj.$hoverParent === e.target
+      );
+      if (!targetScrambleTimelineObj.length) return;
+
+      for (const obj of targetScrambleTimelineObj) {
+        if (!obj.$hoverParent.classList.contains('wait-appear-animation')) {
+          obj.$hoverParent.classList.add('wait-appear-animation');
+          obj.hoverTl.restart();
+        }
+      }
+    };
+
+    const onScrambleText = (e) => {
+      const targets = scrambleTimelines.filter(
+        (scrambleItem) => scrambleItem.$appearParent === e.detail.target
+      );
+      for (const target of targets) {
+        target.appearTl.restart();
+      }
+    };
+
+    const initScrambleText = () => {
+      const $texts = document.querySelectorAll('[data-scramble-text]');
+
+      for (const $text of $texts) {
+        const $hoverParent = $text.closest('[data-scramble-hover]');
+        const $appearParent = $text.closest('[data-scramble-appear]');
+
+        // Appear Timeline
+        let appearTl;
+        if ($appearParent) {
+          const delay = $text.dataset.scrambleDelay ?? 0;
+          const textContent = $text.textContent.trim();
+
+          // Set for drawing from scratch
+          // $text.innerHTML = '&nbsp;';
+
+          appearTl = gsap.timeline({
+            paused: true,
+            onStart: () => {
+              $hoverParent && ($hoverParent.style.pointerEvents = 'none');
+            },
+            onComplete: () => {
+              $hoverParent && ($hoverParent.style.pointerEvents = '');
+              $hoverParent &&
+                $hoverParent.classList.remove('wait-appear-animation');
+              if ($text && textContent) {
+                $text.textContent = textContent;
+              }
+            },
+          });
+
+          appearTl.to(
+            $text,
+            {
+              scrambleText: {
+                chars: 'WEBISOFT',
+                text: textContent,
+                speed: 1,
+              },
+              duration: 0.8,
+            },
+            delay
+          );
+        }
+
+        // Hover Timeline
+        let hoverTl;
+        if ($hoverParent) {
+          // $hoverParent.classList.add('wait-appear-animation');
+          hoverTl = gsap.timeline({
+            paused: true,
+          });
+
+          hoverTl.to($text, {
+            scrambleText: {
+              chars: 'WEBISOFT',
+              text: '{original}',
+              speed: 1,
+            },
+            duration: 0.8,
+          });
+        }
+
+        // Store Data
+        scrambleTimelines.push({
+          $appearParent,
+          $hoverParent,
+          appearTl,
+          hoverTl,
+        });
+
+        // Events
+        $hoverParent?.addEventListener('mouseenter', onMouseEnter);
+      }
+
+      // Global event
+      window.addEventListener('scrambleText', onScrambleText);
+    };
+
+    const destroyScrambleText = () => {
+      for (const [index, scrambleTimeline] of scrambleTimelines.entries()) {
+        scrambleTimeline.appearTl?.kill();
+        scrambleTimeline.hoverTl?.kill();
+        scrambleTimeline.appearTl = null;
+        scrambleTimeline.hoverTl = null;
+
+        scrambleTimeline.$hoverParent?.removeEventListener(
+          'mouseenter',
+          onMouseEnter
+        );
+
+        scrambleTimelines.splice(index, 1);
+      }
+
+      window.removeEventListener('scrambleText', onScrambleText);
+    };
+
+    initScrambleText();
+
+    return () => {
+      destroyScrambleText();
+    };
   }, []);
 
   return (
