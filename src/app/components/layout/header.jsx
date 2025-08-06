@@ -137,10 +137,10 @@ export default function Header() {
       if (!targetScrambleTimelineObj.length) return;
 
       for (const obj of targetScrambleTimelineObj) {
-        if (!obj.$hoverParent.classList.contains('wait-appear-animation')) {
-          obj.$hoverParent.classList.add('wait-appear-animation');
-          obj.hoverTl.restart();
-        }
+        // if (!obj.$hoverParent.classList.contains('wait-appear-animation')) {
+        //   obj.$hoverParent.classList.add('wait-appear-animation');
+        obj.hoverTl.restart();
+        // }
       }
     };
 
@@ -176,8 +176,6 @@ export default function Header() {
             },
             onComplete: () => {
               $hoverParent && ($hoverParent.style.pointerEvents = '');
-              $hoverParent &&
-                $hoverParent.classList.remove('wait-appear-animation');
               if ($text && textContent) {
                 $text.textContent = textContent;
               }
