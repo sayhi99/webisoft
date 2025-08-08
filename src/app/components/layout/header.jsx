@@ -105,6 +105,9 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
+    // 페이지 로드 시 스크롤을 최상단으로 이동
+    window.scrollTo(0, 0);
+
     gsap.registerPlugin(ScrollTrigger);
     const html = document.querySelector('html');
 
@@ -113,7 +116,7 @@ export default function Header() {
       trigger: '.c-reveal',
       start: 'top+=100 top',
       scrub: true,
-      markers: true,
+      // markers: true,
       onUpdate: (self) => {
         if (self.progress > 0) {
           html.classList.add('has-scrolled');
@@ -121,6 +124,32 @@ export default function Header() {
           html.classList.remove('has-scrolled');
         }
       },
+    });
+
+    // data-scramble-scroll 요소들에 대한 ScrollTrigger 생성
+    const scrambleScrollElements = document.querySelectorAll(
+      '[data-scramble-scroll]'
+    );
+
+    scrambleScrollElements.forEach((scrollElement) => {
+      ScrollTrigger.create({
+        trigger: scrollElement,
+        start: 'center center',
+        // markers: true,
+        onEnter: () => {
+          // 해당 요소 내부의 data-scramble-text 요소들에 대해 이벤트 발생
+          const textElements = scrollElement.querySelectorAll(
+            '[data-scramble-text]'
+          );
+          textElements.forEach((textElement) => {
+            window.dispatchEvent(
+              new CustomEvent('scrambleText', {
+                detail: { target: scrollElement },
+              })
+            );
+          });
+        },
+      });
     });
   }, []);
 
@@ -137,19 +166,19 @@ export default function Header() {
       if (!targetScrambleTimelineObj.length) return;
 
       for (const obj of targetScrambleTimelineObj) {
-        // if (!obj.$hoverParent.classList.contains('wait-appear-animation')) {
-        //   obj.$hoverParent.classList.add('wait-appear-animation');
         obj.hoverTl.restart();
-        // }
       }
     };
 
     const onScrambleText = (e) => {
       const targets = scrambleTimelines.filter(
-        (scrambleItem) => scrambleItem.$appearParent === e.detail.target
+        (scrambleItem) => scrambleItem.$scrollParent === e.detail.target
       );
       for (const target of targets) {
-        target.appearTl.restart();
+        // scrollTl이 존재하고 paused 상태일 때만 restart
+        if (target.scrollTl) {
+          target.scrollTl.restart();
+        }
       }
     };
 
@@ -158,18 +187,18 @@ export default function Header() {
 
       for (const $text of $texts) {
         const $hoverParent = $text.closest('[data-scramble-hover]');
-        const $appearParent = $text.closest('[data-scramble-appear]');
+        const $scrollParent = $text.closest('[data-scramble-scroll]');
 
         // Appear Timeline
-        let appearTl;
-        if ($appearParent) {
+        let scrollTl;
+        if ($scrollParent) {
           const delay = $text.dataset.scrambleDelay ?? 0;
           const textContent = $text.textContent.trim();
 
-          // Set for drawing from scratch
-          // $text.innerHTML = '&nbsp;';
+          // 초기 상태를 빈 문자열로 설정
+          $text.textContent = '';
 
-          appearTl = gsap.timeline({
+          scrollTl = gsap.timeline({
             paused: true,
             onStart: () => {
               $hoverParent && ($hoverParent.style.pointerEvents = 'none');
@@ -182,7 +211,7 @@ export default function Header() {
             },
           });
 
-          appearTl.to(
+          scrollTl.to(
             $text,
             {
               scrambleText: {
@@ -199,7 +228,6 @@ export default function Header() {
         // Hover Timeline
         let hoverTl;
         if ($hoverParent) {
-          // $hoverParent.classList.add('wait-appear-animation');
           hoverTl = gsap.timeline({
             paused: true,
           });
@@ -215,10 +243,11 @@ export default function Header() {
         }
 
         // Store Data
+
         scrambleTimelines.push({
-          $appearParent,
+          $scrollParent,
           $hoverParent,
-          appearTl,
+          scrollTl,
           hoverTl,
         });
 
@@ -232,9 +261,9 @@ export default function Header() {
 
     const destroyScrambleText = () => {
       for (const [index, scrambleTimeline] of scrambleTimelines.entries()) {
-        scrambleTimeline.appearTl?.kill();
+        scrambleTimeline.scrollTl?.kill();
         scrambleTimeline.hoverTl?.kill();
-        scrambleTimeline.appearTl = null;
+        scrambleTimeline.scrollTl = null;
         scrambleTimeline.hoverTl = null;
 
         scrambleTimeline.$hoverParent?.removeEventListener(

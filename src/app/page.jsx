@@ -7,6 +7,24 @@ export default function HomePage() {
     const html = document.querySelector('html');
     html.classList.add('is-ready');
   }, []);
+
+  useEffect(() => {
+    var swiperEl = document.querySelector('.mySwiper');
+    Object.assign(swiperEl, {
+      grabCursor: true,
+      effect: 'creative',
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: [0, 0, -400],
+        },
+        next: {
+          translate: ['100%', 0, 0],
+        },
+      },
+    });
+    swiperEl.initialize();
+  }, []);
   return (
     <>
       <div data-load-container="" className="">
@@ -299,7 +317,7 @@ export default function HomePage() {
               <div className="c-reveal_sticky_ui || o-container">
                 <div className="c-grid-labels">
                   <ul className="c-grid-labels_list">
-                    <li className="c-grid-labels_item">
+                    <li className="c-grid-labels_item" data-scramble-scroll="">
                       <div
                         className="c-text -label"
                         data-scramble-text=""
@@ -321,7 +339,7 @@ export default function HomePage() {
                         <p>Artificial Intelligence (AI)</p>
                       </div>
                     </li>
-                    <li className="c-grid-labels_item">
+                    <li className="c-grid-labels_item" data-scramble-scroll="">
                       <div
                         className="c-text -label"
                         data-scramble-text=""
@@ -330,7 +348,7 @@ export default function HomePage() {
                         /0025
                       </div>
                     </li>
-                    <li className="c-grid-labels_item">
+                    <li className="c-grid-labels_item" data-scramble-scroll="">
                       <div
                         className="c-text -label"
                         data-scramble-text=""
@@ -351,8 +369,11 @@ export default function HomePage() {
                 data-scroll-call="scrambleText"
                 data-scramble-appear=""
               >
-                <h2 className="c-reveal_intro_label || c-text -label">
-                  <span data-scramble-text="">&nbsp;</span>
+                <h2
+                  className="c-reveal_intro_label || c-text -label"
+                  data-scramble-scroll=""
+                >
+                  <span data-scramble-text="">WHO WE ARE</span>
                   <span>/</span>
                 </h2>
                 <div className="c-reveal_intro_content">
@@ -1252,6 +1273,7 @@ export default function HomePage() {
                       className="c-button -default wait-appear-animation"
                       href="/contact"
                       data-scramble-hover=""
+                      data-scramble-scroll=""
                       title="Contact Us"
                       aria-label="Contact Us"
                     >
@@ -1264,7 +1286,7 @@ export default function HomePage() {
                         data-scroll-call="scrambleText"
                         data-scramble-appear=""
                       >
-                        &nbsp;
+                        Contact Us
                       </span>
                       <span className="c-button_icon">
                         <span className="c-icon">
@@ -1294,7 +1316,10 @@ export default function HomePage() {
             >
               <div className="o-container">
                 <div className="c-section-heading_inner || o-grid -cols -gutters-x || c-heading -h2">
-                  <div className="c-section-heading_left || o-grid_item u-gc-1/4@from-small">
+                  <div
+                    className="c-section-heading_left || o-grid_item u-gc-1/4@from-small"
+                    data-scramble-scroll=""
+                  >
                     <p className="c-section-heading_separator || c-text -label">
                       /
                     </p>
@@ -1303,7 +1328,7 @@ export default function HomePage() {
                       data-scramble-text=""
                       data-scramble-delay=".1"
                     >
-                      &nbsp;
+                      Services
                     </p>
                   </div>
                   <div className="c-section-heading_center || o-grid_item u-gc-4/10@from-small">
@@ -1311,13 +1336,16 @@ export default function HomePage() {
                       Tech stacks for a rapidly evolving world:
                     </h2>
                   </div>
-                  <div className="c-section-heading_right || o-grid_item u-gc-10/13@from-small">
+                  <div
+                    className="c-section-heading_right || o-grid_item u-gc-10/13@from-small"
+                    data-scramble-scroll=""
+                  >
                     <p
                       className="c-section-heading_index || c-text -label"
                       data-scramble-text=""
                       data-scramble-delay=".3"
                     >
-                      &nbsp;
+                      /005
                     </p>
                   </div>
                 </div>
@@ -1401,6 +1429,7 @@ export default function HomePage() {
                                   className="c-button c-tile-stacking_cta -default wait-appear-animation"
                                   href="/advisory"
                                   aria-label="See our services"
+                                  data-scramble-scroll=""
                                   data-scramble-hover=""
                                 >
                                   <span
@@ -1408,7 +1437,7 @@ export default function HomePage() {
                                     data-scramble-text=""
                                     data-scramble-delay=".3"
                                   >
-                                    &nbsp;
+                                    SEE OUR SERVICES
                                   </span>
                                   <span className="c-button_icon">
                                     <span className="c-icon">
@@ -1512,13 +1541,14 @@ export default function HomePage() {
                                   href="/blockchain"
                                   aria-label="See our services"
                                   data-scramble-hover=""
+                                  data-scramble-scroll=""
                                 >
                                   <span
                                     className="c-button_label"
                                     data-scramble-text=""
                                     data-scramble-delay=".3"
                                   >
-                                    &nbsp;
+                                    SEE OUR SERVICES
                                   </span>
                                   <span className="c-button_icon">
                                     <span className="c-icon">
@@ -1621,6 +1651,7 @@ export default function HomePage() {
                                   className="c-button c-tile-stacking_cta -default wait-appear-animation"
                                   href="/product-development"
                                   aria-label="See our services"
+                                  data-scramble-scroll=""
                                   data-scramble-hover=""
                                 >
                                   <span
@@ -1628,7 +1659,7 @@ export default function HomePage() {
                                     data-scramble-text=""
                                     data-scramble-delay=".3"
                                   >
-                                    &nbsp;
+                                    SEE OUR SERVICES
                                   </span>
                                   <span className="c-button_icon">
                                     <span className="c-icon">
@@ -1732,13 +1763,14 @@ export default function HomePage() {
                                   href="/enterprise-software"
                                   aria-label="See our services"
                                   data-scramble-hover=""
+                                  data-scramble-scroll=""
                                 >
                                   <span
                                     className="c-button_label"
                                     data-scramble-text=""
                                     data-scramble-delay=".3"
                                   >
-                                    &nbsp;
+                                    SEE OUR SERVICES
                                   </span>
                                   <span className="c-button_icon">
                                     <span className="c-icon">
@@ -1846,13 +1878,14 @@ export default function HomePage() {
                                   href="/artificial-intelligence-ai"
                                   aria-label="See our services"
                                   data-scramble-hover=""
+                                  data-scramble-scroll=""
                                 >
                                   <span
                                     className="c-button_label"
                                     data-scramble-text=""
                                     data-scramble-delay=".3"
                                   >
-                                    &nbsp;
+                                    SEE OUR SERVICES
                                   </span>
                                   <span className="c-button_icon">
                                     <span className="c-icon">
@@ -1908,7 +1941,10 @@ export default function HomePage() {
             >
               <div className="o-container">
                 <div className="c-section-heading_inner || o-grid -cols -gutters-x || c-heading -h2">
-                  <div className="c-section-heading_left || o-grid_item u-gc-1/4@from-small">
+                  <div
+                    className="c-section-heading_left || o-grid_item u-gc-1/4@from-small"
+                    data-scramble-scroll=""
+                  >
                     <p className="c-section-heading_separator || c-text -label">
                       /
                     </p>
@@ -1917,7 +1953,7 @@ export default function HomePage() {
                       data-scramble-text=""
                       data-scramble-delay=".1"
                     >
-                      &nbsp;
+                      Our Clients
                     </p>
                   </div>
                   <div className="c-section-heading_center || o-grid_item u-gc-4/10@from-small">
@@ -1925,13 +1961,16 @@ export default function HomePage() {
                       We engage with:
                     </h2>
                   </div>
-                  <div className="c-section-heading_right || o-grid_item u-gc-10/13@from-small">
+                  <div
+                    className="c-section-heading_right || o-grid_item u-gc-10/13@from-small"
+                    data-scramble-scroll=""
+                  >
                     <p
                       className="c-section-heading_index || c-text -label"
                       data-scramble-text=""
                       data-scramble-delay=".3"
                     >
-                      &nbsp;
+                      /008
                     </p>
 
                     <a
@@ -1940,6 +1979,7 @@ export default function HomePage() {
                       title="View all"
                       aria-label="View all"
                       data-scramble-hover=""
+                      data-scramble-scroll=""
                     >
                       <span className="u-screen-reader-text">View all</span>
                       <span
@@ -1947,7 +1987,7 @@ export default function HomePage() {
                         data-scramble-text=""
                         data-scramble-delay=".3"
                       >
-                        &nbsp;
+                        View all
                       </span>
                       <span className="c-button_icon">
                         <span className="c-icon">
@@ -2020,7 +2060,7 @@ export default function HomePage() {
                               className="c-tile-industry_label || c-text -label"
                               data-scramble-text=""
                             >
-                              &nbsp;
+                              I/001
                             </p>
                             <div className="c-tile-industry_layout">
                               <div className="c-tile-industry_layout_item">
@@ -2053,7 +2093,7 @@ export default function HomePage() {
                                       className="c-button_label"
                                       data-scramble-text=""
                                     >
-                                      &nbsp;
+                                      Explore clients
                                     </span>
                                     <span className="c-button_icon">
                                       <span className="c-icon">
