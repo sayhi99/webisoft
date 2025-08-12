@@ -1,6 +1,11 @@
 'use client';
 import './main.css';
-import { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCreative } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-creative';
 
 export default function HomePage() {
   useEffect(() => {
@@ -9,22 +14,120 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    var swiperEl = document.querySelector('.mySwiper');
-    Object.assign(swiperEl, {
-      grabCursor: true,
-      effect: 'creative',
-      creativeEffect: {
-        prev: {
-          shadow: true,
-          translate: [0, 0, -400],
-        },
-        next: {
-          translate: ['100%', 0, 0],
-        },
-      },
-    });
-    swiperEl.initialize();
+    // progress carousel 내부에서만 마우스 이벤트 처리
+    const progressCarouselInner = document.querySelector(
+      '.c-progress-carousel_inner'
+    );
+    const cursor = document.querySelector('.c-progress-carousel_cursor');
+    const swiper = document.querySelector('.c-progress-carousel_list');
+
+    if (progressCarouselInner && cursor && swiper) {
+      let animationFrameId;
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let isDragging = false;
+
+      // 부드러운 애니메이션 함수
+      const animateCursor = () => {
+        // 현재 위치에서 목표 위치로 부드럽게 이동
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+
+        // 커서 위치 업데이트
+        cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+
+        // 애니메이션 계속 실행
+        animationFrameId = requestAnimationFrame(animateCursor);
+      };
+
+      // 애니메이션 시작
+      animateCursor();
+
+      // 마우스 위치 업데이트 함수
+      const updateCursorPosition = (e) => {
+        // 부모 컨테이너 기준으로 상대적 위치 계산
+        const rect = progressCarouselInner.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // 커서 요소의 크기 절반을 계산하여 중앙 정렬
+        const cursorHalfWidth = cursor.offsetWidth / 2;
+        const cursorHalfHeight = cursor.offsetHeight / 2;
+
+        // 커서가 컨테이너 내부에만 위치하도록 제한 (중앙 정렬 고려)
+        const maxX = rect.width - cursor.offsetWidth;
+        const maxY = rect.height - cursor.offsetHeight;
+
+        // 마우스 커서가 cursor 요소의 중앙에 오도록 목표 위치 계산
+        targetX = Math.max(0, Math.min(x - cursorHalfWidth, maxX));
+        targetY = Math.max(0, Math.min(y - cursorHalfHeight, maxY));
+
+        // 커서가 컨테이너 내부에 있을 때 is-active 클래스 추가
+        cursor.classList.add('is-active');
+      };
+
+      // 일반 마우스 이벤트
+      progressCarouselInner.addEventListener('mousemove', updateCursorPosition);
+
+      // 마우스가 컨테이너를 벗어나면 is-active 클래스 제거
+      progressCarouselInner.addEventListener('mouseleave', () => {
+        cursor.classList.remove('is-active');
+      });
+
+      // 마우스가 컨테이너에 들어오면 is-active 클래스 추가
+      progressCarouselInner.addEventListener('mouseenter', () => {
+        cursor.classList.add('is-active');
+      });
+
+      // Swiper 드래그 이벤트 처리
+      if (swiper.swiper) {
+        // 드래그 시작
+        swiper.swiper.on('dragStart', () => {
+          isDragging = true;
+        });
+
+        // 드래그 중
+        swiper.swiper.on('dragMove', (e) => {
+          if (isDragging) {
+            // 드래그 중일 때도 마우스 위치 업데이트
+            updateCursorPosition(e);
+          }
+        });
+
+        // 드래그 종료
+        swiper.swiper.on('dragEnd', () => {
+          isDragging = false;
+        });
+      }
+
+      // 전역 마우스 이벤트로 드래그 중에도 커서 추적
+      const handleGlobalMouseMove = (e) => {
+        if (isDragging && progressCarouselInner.contains(e.target)) {
+          updateCursorPosition(e);
+        }
+      };
+
+      document.addEventListener('mousemove', handleGlobalMouseMove);
+
+      // cleanup 함수에서 애니메이션 정리
+      return () => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+        document.removeEventListener('mousemove', handleGlobalMouseMove);
+
+        // Swiper 이벤트 정리
+        if (swiper.swiper) {
+          swiper.swiper.off('dragStart');
+          swiper.swiper.off('dragMove');
+          swiper.swiper.off('dragEnd');
+        }
+      };
+    }
   }, []);
+
   return (
     <>
       <div data-load-container="" className="">
@@ -2029,11 +2132,24 @@ export default function HomePage() {
                   data-scroll-repeat=""
                   data-scroll-ignore-fold=""
                 >
-                  <ul
+                  <Swiper
                     className="c-progress-carousel_list"
                     data-progress-carousel="list"
+                    effect={'creative'}
+                    creativeEffect={{
+                      prev: {
+                        shadow: true,
+                        translate: [0, 0, -400],
+                        opacity: 0,
+                      },
+                      next: {
+                        translate: ['100%', 0, 0],
+                        opacity: 1,
+                      },
+                    }}
+                    modules={[EffectCreative]}
                   >
-                    <li
+                    <SwiperSlide
                       className="c-progress-carousel_item"
                       data-progress-carousel="item"
                     >
@@ -2134,9 +2250,9 @@ export default function HomePage() {
                           </div>
                         </article>
                       </div>
-                    </li>
+                    </SwiperSlide>
 
-                    <li
+                    <SwiperSlide
                       className="c-progress-carousel_item"
                       data-progress-carousel="item"
                     >
@@ -2156,7 +2272,7 @@ export default function HomePage() {
                               className="c-tile-industry_label || c-text -label"
                               data-scramble-text=""
                             >
-                              &nbsp;
+                              I/002
                             </p>
                             <div className="c-tile-industry_layout">
                               <div className="c-tile-industry_layout_item">
@@ -2190,7 +2306,7 @@ export default function HomePage() {
                                       className="c-button_label"
                                       data-scramble-text=""
                                     >
-                                      &nbsp;
+                                      Explore Clients
                                     </span>
                                     <span className="c-button_icon">
                                       <span className="c-icon">
@@ -2231,9 +2347,9 @@ export default function HomePage() {
                           </div>
                         </article>
                       </div>
-                    </li>
+                    </SwiperSlide>
 
-                    <li
+                    <SwiperSlide
                       className="c-progress-carousel_item"
                       data-progress-carousel="item"
                     >
@@ -2253,7 +2369,7 @@ export default function HomePage() {
                               className="c-tile-industry_label || c-text -label"
                               data-scramble-text=""
                             >
-                              &nbsp;
+                              I/003
                             </p>
                             <div className="c-tile-industry_layout">
                               <div className="c-tile-industry_layout_item">
@@ -2287,7 +2403,7 @@ export default function HomePage() {
                                       className="c-button_label"
                                       data-scramble-text=""
                                     >
-                                      &nbsp;
+                                      Explore Clients
                                     </span>
                                     <span className="c-button_icon">
                                       <span className="c-icon">
@@ -2329,8 +2445,8 @@ export default function HomePage() {
                           </div>
                         </article>
                       </div>
-                    </li>
-                  </ul>
+                    </SwiperSlide>
+                  </Swiper>
                   <div className="c-progress-carousel_bullets || c-carousel-bullets">
                     <ul
                       className="c-carousel-bullets_list"
