@@ -10151,7 +10151,12 @@ html.js-focus-visible .c-tile-subservice_link.focus-visible {
   transform: translate3d(-50%, -50%, 0);
   mix-blend-mode: multiply;
 }
-
+.c-tile-stacking_visual_media dotlottie-wc{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
 .c-tile-stacking_index {
   width: calc(
     0.25 * (calc(100 * var(--vw, 1vw)) - 2 * var(--grid-margin, 0px)) -

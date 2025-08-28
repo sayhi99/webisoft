@@ -3,6 +3,7 @@ import './main.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative } from 'swiper/modules';
+import '@lottiefiles/dotlottie-wc';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-creative';
@@ -19,9 +20,9 @@ export default function HomePage() {
       '.c-progress-carousel_inner'
     );
     const cursor = document.querySelector('.c-progress-carousel_cursor');
-    const swiper = document.querySelector('.c-progress-carousel_list');
+    const swiperElement = document.querySelector('.c-progress-carousel_list');
 
-    if (progressCarouselInner && cursor && swiper) {
+    if (progressCarouselInner && cursor && swiperElement) {
       let animationFrameId;
       let currentX = 0;
       let currentY = 0;
@@ -68,8 +69,33 @@ export default function HomePage() {
         cursor.classList.add('is-active');
       };
 
-      // 일반 마우스 이벤트
-      progressCarouselInner.addEventListener('mousemove', updateCursorPosition);
+      // 드래그 시작 함수
+      const dragStart = (e) => {
+        e.stopPropagation();
+        isDragging = true;
+        console.log('Drag started');
+
+        // document에 mousemove 이벤트 바인딩 (커서가 이미지 밖에서도 추적)
+        document.addEventListener('mousemove', updateCursorPosition);
+        progressCarouselInner.classList.add('dragging');
+      };
+
+      // 드래그 종료 함수
+      const dragEnd = () => {
+        isDragging = false;
+        console.log('Drag ended');
+
+        // mousemove 이벤트 해제
+        document.removeEventListener('mousemove', updateCursorPosition);
+        progressCarouselInner.classList.remove('dragging');
+      };
+
+      // 일반 마우스 이벤트 (드래그 중이 아닐 때만)
+      progressCarouselInner.addEventListener('mousemove', (e) => {
+        if (!isDragging) {
+          updateCursorPosition(e);
+        }
+      });
 
       // 마우스가 컨테이너를 벗어나면 is-active 클래스 제거
       progressCarouselInner.addEventListener('mouseleave', () => {
@@ -81,49 +107,24 @@ export default function HomePage() {
         cursor.classList.add('is-active');
       });
 
-      // Swiper 드래그 이벤트 처리
-      if (swiper.swiper) {
-        // 드래그 시작
-        swiper.swiper.on('dragStart', () => {
-          isDragging = true;
-        });
+      // Swiper 요소에서 드래그 시작 감지
+      swiperElement.addEventListener('mousedown', dragStart);
 
-        // 드래그 중
-        swiper.swiper.on('dragMove', (e) => {
-          if (isDragging) {
-            // 드래그 중일 때도 마우스 위치 업데이트
-            updateCursorPosition(e);
-          }
-        });
-
-        // 드래그 종료
-        swiper.swiper.on('dragEnd', () => {
-          isDragging = false;
-        });
-      }
-
-      // 전역 마우스 이벤트로 드래그 중에도 커서 추적
-      const handleGlobalMouseMove = (e) => {
-        if (isDragging && progressCarouselInner.contains(e.target)) {
-          updateCursorPosition(e);
-        }
-      };
-
-      document.addEventListener('mousemove', handleGlobalMouseMove);
+      // 문서 전체에서 드래그 종료 감지
+      document.addEventListener('mouseup', dragEnd);
+      document.addEventListener('mouseleave', dragEnd);
 
       // cleanup 함수에서 애니메이션 정리
       return () => {
         if (animationFrameId) {
           cancelAnimationFrame(animationFrameId);
         }
-        document.removeEventListener('mousemove', handleGlobalMouseMove);
 
-        // Swiper 이벤트 정리
-        if (swiper.swiper) {
-          swiper.swiper.off('dragStart');
-          swiper.swiper.off('dragMove');
-          swiper.swiper.off('dragEnd');
-        }
+        // 모든 이벤트 리스너 정리
+        document.removeEventListener('mousemove', updateCursorPosition);
+        document.removeEventListener('mouseup', dragEnd);
+        document.removeEventListener('mouseleave', dragEnd);
+        swiperElement.removeEventListener('mousedown', dragStart);
       };
     }
   }, []);
@@ -1564,15 +1565,13 @@ export default function HomePage() {
                                   data-lottie-player-path="/media/service/advisory_hKBm80m.json"
                                   data-lottie-id="id_lottie_tile_stack_160_1"
                                 >
-                                  <canvas
-                                    id="id_lottie_tile_stack_160_1_canvas"
-                                    width="434"
-                                    height="217"
-                                    style={{
-                                      width: '100%',
-                                      height: '100%',
-                                    }}
-                                  ></canvas>
+                                  <dotlottie-wc
+                                    src="https://lottie.host/586900dd-93ae-4375-beca-1ac5d95d5f90/gu3DnHRSmg.lottie"
+                                    style={{ width: '300px', height: '300px' }}
+                                    speed="1"
+                                    autoplay
+                                    loop
+                                  ></dotlottie-wc>
                                 </div>
                               </div>
                             </div>
@@ -1675,15 +1674,13 @@ export default function HomePage() {
                                   data-lottie-player-path="/media/service/blockchain_KwrUPE9.json"
                                   data-lottie-id="id_lottie_tile_stack_139_2"
                                 >
-                                  <canvas
-                                    id="id_lottie_tile_stack_139_2_canvas"
-                                    width="434"
-                                    height="217"
-                                    style={{
-                                      width: '100%',
-                                      height: '100%',
-                                    }}
-                                  ></canvas>
+                                  <dotlottie-wc
+                                    src="https://lottie.host/8ae68d13-3a9a-4f98-842c-70e9c1ef78b5/mxyMKKgbsn.lottie"
+                                    style={{ width: '400px', height: '400px' }}
+                                    speed="1"
+                                    autoplay
+                                    loop
+                                  ></dotlottie-wc>
                                 </div>
                               </div>
                             </div>
@@ -1786,15 +1783,13 @@ export default function HomePage() {
                                   data-lottie-player-path="/media/service/product.json"
                                   data-lottie-id="id_lottie_tile_stack_152_3"
                                 >
-                                  <canvas
-                                    id="id_lottie_tile_stack_152_3_canvas"
-                                    width="434"
-                                    height="217"
-                                    style={{
-                                      width: '100%',
-                                      height: '100%',
-                                    }}
-                                  ></canvas>
+                                  <dotlottie-wc
+                                    src="https://lottie.host/4dde7a5d-42af-4419-9017-05cc8f203a19/Gn1ks7N2T0.lottie"
+                                    style={{ width: '300px', height: '300px' }}
+                                    speed="1"
+                                    autoplay
+                                    loop
+                                  ></dotlottie-wc>
                                 </div>
                               </div>
                             </div>
@@ -1897,15 +1892,13 @@ export default function HomePage() {
                                   data-lottie-player-path="/media/service/team_WRVVwRk.json"
                                   data-lottie-id="id_lottie_tile_stack_159_4"
                                 >
-                                  <canvas
-                                    id="id_lottie_tile_stack_159_4_canvas"
-                                    width="434"
-                                    height="217"
-                                    style={{
-                                      width: '100%',
-                                      height: '100%',
-                                    }}
-                                  ></canvas>
+                                  <dotlottie-wc
+                                    src="https://lottie.host/b4b71418-ad83-461c-9bbb-0c7400275f3e/ud57j9Wj1T.lottie"
+                                    style={{ width: '300px', height: '300px' }}
+                                    speed="1"
+                                    autoplay
+                                    loop
+                                  ></dotlottie-wc>
                                 </div>
                               </div>
                             </div>
@@ -2012,15 +2005,13 @@ export default function HomePage() {
                                   data-lottie-player-path="/media/service/ai.json"
                                   data-lottie-id="id_lottie_tile_stack_158_5"
                                 >
-                                  <canvas
-                                    id="id_lottie_tile_stack_158_5_canvas"
-                                    width="434"
-                                    height="217"
-                                    style={{
-                                      width: '100%',
-                                      height: '100%',
-                                    }}
-                                  ></canvas>
+                                  <dotlottie-wc
+                                    src="https://lottie.host/71c0d494-f22e-41e6-a5a6-32d956a51c25/oip9gv3T7O.lottie"
+                                    style={{ width: '300px', height: '300px' }}
+                                    speed="1"
+                                    autoplay
+                                    loop
+                                  ></dotlottie-wc>
                                 </div>
                               </div>
                             </div>
