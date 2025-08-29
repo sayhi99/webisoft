@@ -3,18 +3,491 @@ import './main.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative } from 'swiper/modules';
-import '@lottiefiles/dotlottie-wc';
+// import '@lottiefiles/dotlottie-wc';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 
 export default function HomePage() {
   useEffect(() => {
-    const html = document.querySelector('html');
-    html.classList.add('is-ready');
+    // 브라우저 환경에서만 실행
+    if (typeof window !== 'undefined') {
+      const html = document.querySelector('html');
+      if (html) {
+        html.classList.add('is-ready');
+      }
+    }
   }, []);
 
   useEffect(() => {
+    /* Minimal --progress updater (no Lenis/modujs 필요 없음) */
+    (() => {
+      // 유틸
+      const vpSize = () => ({ w: window.innerWidth, h: window.innerHeight });
+      const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+
+      // 요소 1개에 대한 상태/계산
+      class ScrollEl {
+        constructor(el) {
+          this.el = el;
+          // 원본 기본값과 동일하게 해석
+          this.attrs = {
+            scrollOffset: el.dataset.scrollOffset ?? '0,0',
+            scrollPosition: el.dataset.scrollPosition ?? 'start,end',
+            scrollIgnoreFold: el.dataset.scrollIgnoreFold != null,
+          };
+          this.metrics = { bcr: null, offsetStart: 0, offsetEnd: 0 };
+          this.intersection = { start: 0, end: 0 };
+          this.isInFold = false;
+          this.lastProgress = null;
+          this._resize(); // 초기 계산
+        }
+
+        _resize() {
+          this.metrics.bcr = this.el.getBoundingClientRect();
+          this._computeMetrics();
+          this._computeIntersection();
+        }
+
+        _computeMetrics() {
+          const { top, left, height, width } = this.metrics.bcr;
+          const vertical = true; // 수직만 지원(원본도 기본 수직)
+          const vh = vpSize().h;
+          const scroll = vertical ? window.scrollY : window.scrollX;
+          const primaryPos = vertical ? top : left;
+          const primarySize = vertical ? height : width;
+
+          this.metrics.offsetStart = scroll + primaryPos;
+          this.metrics.offsetEnd = this.metrics.offsetStart + primarySize;
+
+          // fold: 요소 시작점이 1뷰포트 높이보다 위에 있으면 in-fold로 간주
+          this.isInFold =
+            this.metrics.offsetStart < vh && !this.attrs.scrollIgnoreFold;
+        }
+
+        _computeIntersection() {
+          const vertical = true;
+          const view = vertical ? vpSize().h : vpSize().w;
+          const size = vertical
+            ? this.metrics.bcr.height
+            : this.metrics.bcr.width;
+
+          // offset 파싱 (예: "10%, -20")
+          const [offA, offB] = (this.attrs.scrollOffset || '0,0')
+            .split(',')
+            .map((s) => (s ?? '0').trim());
+          const parseOff = (val) => {
+            if (val.endsWith('%'))
+              return view * (parseInt(val.replace('%', '').trim(), 10) / 100);
+            const n = parseInt(val, 10);
+            return isNaN(n) ? 0 : n;
+          };
+          const a = parseOff(offA ?? '0');
+          const c = parseOff(offB ?? '0');
+
+          // position 파싱 (예: "start,end")
+          let [posStart, posEnd] = (this.attrs.scrollPosition || 'start,end')
+            .split(',')
+            .map((s) => (s ?? '').trim());
+          if (this.isInFold) posStart = 'fold'; // 원본과 동일 처리
+
+          // start 지점
+          switch (posStart) {
+            case 'middle':
+              this.intersection.start =
+                this.metrics.offsetStart - view + a + 0.5 * size;
+              break;
+            case 'end':
+              this.intersection.start =
+                this.metrics.offsetStart - view + a + size;
+              break;
+            case 'fold':
+              this.intersection.start = 0;
+              break;
+            case 'start':
+            default:
+              this.intersection.start = this.metrics.offsetStart - view + a;
+          }
+          // end 지점
+          switch (posEnd) {
+            case 'start':
+              this.intersection.end = this.metrics.offsetStart - c;
+              break;
+            case 'middle':
+              this.intersection.end = this.metrics.offsetStart - c + 0.5 * size;
+              break;
+            case 'end':
+            default:
+              this.intersection.end = this.metrics.offsetStart - c + size;
+          }
+          // end ≤ start 보호(원본과 동일 아이디어)
+          if (this.intersection.end <= this.intersection.start) {
+            switch (posEnd) {
+              case 'middle':
+                this.intersection.end = this.intersection.start + 0.5 * size;
+                break;
+              case 'start':
+              default:
+                this.intersection.end = this.intersection.start + 1;
+                break;
+            }
+          }
+        }
+
+        updateProgress() {
+          const scroll = window.scrollY; // 수직 기준
+          const { start, end } = this.intersection;
+          const raw = (scroll - start) / (end - start);
+          const p = clamp01(raw);
+
+          if (p !== this.lastProgress) {
+            this.lastProgress = p;
+            this.el.style.setProperty('--progress', String(p)); // 핵심: --progress 반영
+          }
+        }
+      }
+
+      // 대상 요소 수집: data-scroll + data-scroll-css-progress
+      const nodes = Array.from(
+        document.querySelectorAll('[data-scroll][data-scroll-css-progress]')
+      );
+      const items = nodes.map((el) => new ScrollEl(el));
+
+      // 리사이즈/폰트 로딩 후 다시 계산
+      const recalcAll = () => {
+        items.forEach((it) => it._resize());
+        tick();
+      };
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(recalcAll).catch(() => {});
+      }
+      window.addEventListener(
+        'resize',
+        () => {
+          // 다음 프레임에 묶어서 처리
+          cancelAnimationFrame(recalcAll._rafId);
+          recalcAll._rafId = requestAnimationFrame(recalcAll);
+        },
+        { passive: true }
+      );
+
+      // 스크롤 시 진행률 업데이트 (rAF로 스로틀)
+      let ticking = false;
+      const tick = () => {
+        ticking = false;
+        items.forEach((it) => it.updateProgress());
+      };
+      const onScroll = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(tick);
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // 초기 1회 계산
+      recalcAll();
+    })();
+  }, []);
+
+  useEffect(() => {
+    // 이미지 시퀀스
+
+    const canvas = document.querySelector('.c-reveal-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = 1694;
+    canvas.height = 952;
+
+    const frameCount = 125;
+
+    const currentFrame = (idx) => {
+      return `/images/c-reveal/${idx.toString().padStart(3, '0')}.webp`;
+    };
+    const images = [];
+    const card = {
+      frame: 0,
+    };
+
+    //사전에 리소스를 로드한다
+
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = currentFrame(i + 1);
+      images.push(img);
+    }
+
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: '.c-reveal',
+        scrub: 1,
+        start: 'top top',
+        end: 'bottom center',
+      },
+      frame: frameCount - 1,
+      snap: 'frame',
+      ease: 'none',
+      onUpdate: render,
+    });
+
+    images[0].onload = render;
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(images[card.frame], 0, 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    (() => {
+      // 원본과 동일한 상수
+      class Stacking {
+        static HEADER_MARGIN = 60;
+
+        constructor(rootEl) {
+          this.el = rootEl;
+
+          // modujs의 this.$ 대체: [data-stacking="..."] 셀렉터
+          this.$ = (key) =>
+            Array.from(this.el.querySelectorAll(`[data-stacking="${key}"]`));
+
+          // UI refs
+          this.$list = this.$('list')[0] || null;
+          this.$items = this.$('item');
+          this.$elements = this.$('element');
+          this.$triggers = this.$('trigger');
+          this.$headers = this.$('header');
+
+          // Data
+          this.itemsHeightArr = [];
+          this.itemsData = [];
+          this.listHeight = 0;
+
+          // 바인딩
+          this.onResizeBind = this.onResize.bind(this);
+          this.onLastStackingProgressBind =
+            this.onLastStackingProgress.bind(this);
+          this.onTriggerStackingItemBind =
+            this.onTriggerStackingItem.bind(this);
+
+          // 초기화
+          this.init();
+        }
+
+        init() {
+          this.bindEvents();
+          // 폰트 로딩 완료 후 재계산
+          if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => this.onFontsLoaded());
+          } else {
+            this.onFontsLoaded();
+          }
+        }
+
+        destroy() {
+          this.unbindEvents();
+        }
+
+        bindEvents() {
+          window.addEventListener('resize', this.onResizeBind, {
+            passive: true,
+          });
+          window.addEventListener(
+            'stackingProgress',
+            this.onLastStackingProgressBind
+          );
+          // 트리거 스택 아이템 이벤트 추가
+          window.addEventListener(
+            'triggerStackingItem',
+            this.onTriggerStackingItemBind
+          );
+        }
+
+        unbindEvents() {
+          window.removeEventListener('resize', this.onResizeBind);
+          window.removeEventListener(
+            'stackingProgress',
+            this.onLastStackingProgressBind
+          );
+          window.removeEventListener(
+            'triggerStackingItem',
+            this.onTriggerStackingItemBind
+          );
+        }
+
+        // 새로 추가: 트리거 스택 아이템 핸들러
+        onTriggerStackingItem(e) {
+          const { target } = (e && e.detail) || {};
+          if (!target) return;
+
+          // 현재 스택 컨테이너 안의 트리거인지 확인
+          if (!this.el.contains(target)) return;
+
+          // 트리거된 요소의 인덱스 찾기
+          const triggerIndex = this.$triggers.findIndex(
+            (trigger) => trigger === target
+          );
+          if (triggerIndex === -1) return;
+
+          console.log(`Stacking item ${triggerIndex} triggered`);
+
+          // 해당 스택 아이템 활성화
+          this.activateStackItem(triggerIndex);
+        }
+
+        // 새로 추가: 스택 아이템 활성화 함수
+        activateStackItem(index) {
+          // 모든 아이템에서 active 클래스 제거
+          this.$items.forEach((item) => item.classList.remove('is-active'));
+
+          // 현재 아이템에 active 클래스 추가
+          if (this.$items[index]) {
+            this.$items[index].classList.add('is-active');
+          }
+
+          // 이전 아이템들은 stacked 클래스 추가 (쌓인 상태)
+          for (let i = 0; i < index; i++) {
+            if (this.$items[i]) {
+              this.$items[i].classList.add('is-stacked');
+            }
+          }
+
+          // 이후 아이템들은 stacked 클래스 제거
+          for (let i = index + 1; i < this.$items.length; i++) {
+            if (this.$items[i]) {
+              this.$items[i].classList.remove('is-stacked');
+            }
+          }
+        }
+
+        onResize() {
+          this.resize();
+        }
+
+        onFontsLoaded() {
+          this.resize();
+        }
+
+        onLastStackingProgress(e) {
+          const { target, progress } = (e && e.detail) || {};
+          if (!target || typeof progress !== 'number') return;
+          if (this.el.contains(target)) {
+            // viewport 높이
+            this.wHeight =
+              window.innerHeight || document.documentElement.clientHeight || 0;
+            const offset = this.wHeight * progress * -1;
+            if (this.$list) {
+              this.$list.style.setProperty(
+                '--negative-extra-offset',
+                `${offset}px`
+              );
+            }
+          }
+        }
+
+        resize() {
+          this.computeMetrics();
+        }
+
+        computeMetrics() {
+          // Window
+          this.wHeight =
+            window.innerHeight || document.documentElement.clientHeight || 0;
+
+          if (!this.$list) return;
+
+          // Listing height
+          this.elementsHeightArr = [];
+          for (const [index, $element] of this.$elements.entries()) {
+            const $trigger = this.$triggers[index];
+            const elementHeight = $element.offsetHeight;
+            this.elementsHeightArr.push(elementHeight);
+            if ($trigger) {
+              $trigger.style.height = `${elementHeight}px`;
+            }
+          }
+          this.listHeight = this.elementsHeightArr.reduce(
+            (acc, cur) => acc + cur,
+            0
+          );
+          this.$list.style.setProperty(
+            '--total-height',
+            `${this.listHeight}px`
+          );
+
+          // Each elements data
+          this.elementsData = [];
+          let previousHeightSum = 0;
+          let previousHeaderHeightSum = 0;
+
+          for (const $element of this.$elements) {
+            const index = this.elementsData.length;
+            const elementHeight = $element.offsetHeight;
+            const headerHeight =
+              (this.$headers[index] && this.$headers[index].offsetHeight) || 0;
+
+            let topValue = previousHeaderHeightSum;
+            let areaHeight = this.listHeight - previousHeightSum;
+
+            // 원본 유틸(isMobileWidth) 대체: 간단한 폭 기준
+            const isMobile = window.matchMedia
+              ? window.matchMedia('(max-width: 767px)').matches
+              : false;
+            if (isMobile) {
+              topValue = topValue - 20 * index;
+              // areaHeight 보정 주석은 원본 그대로 유지
+              // areaHeight = areaHeight - 30;
+            }
+
+            previousHeightSum += elementHeight;
+            previousHeaderHeightSum += headerHeight + Stacking.HEADER_MARGIN;
+
+            const elementData = {
+              index,
+              $el: $element,
+              top: topValue,
+              areaHeight: areaHeight,
+            };
+
+            if (this.$items[index]) {
+              this.$items[index].style.setProperty(
+                '--position-top',
+                `${topValue}px`
+              );
+              this.$items[index].style.setProperty(
+                '--area-height',
+                `${areaHeight}px`
+              );
+            }
+            this.elementsData.push(elementData);
+          }
+
+          // Last item offset
+          this.lastItemObj = this.elementsData[this.elementsData.length - 1];
+          if (this.lastItemObj) {
+            const offset = Math.min(
+              this.wHeight -
+                (this.lastItemObj.areaHeight + this.lastItemObj.top),
+              0
+            );
+            this.$list.style.setProperty('--negative-offset', `${offset}px`);
+          }
+        }
+      }
+
+      // 페이지 내 모든 [data-module-stacking] 인스턴스화
+      const roots = document.querySelectorAll('[data-module-stacking]');
+      const instances = Array.from(roots).map((el) => new Stacking(el));
+
+      // 디버그용
+      window.__StackingInstances = instances;
+    })();
+  }, []);
+
+  useEffect(() => {
+    // 브라우저 환경에서만 실행
+    if (typeof window === 'undefined') return;
+
     // progress carousel 내부에서만 마우스 이벤트 처리
     const progressCarouselInner = document.querySelector(
       '.c-progress-carousel_inner'
@@ -120,11 +593,18 @@ export default function HomePage() {
           cancelAnimationFrame(animationFrameId);
         }
 
+        // ScrollTrigger 정리
+        if (window.ScrollTrigger) {
+          window.ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        }
+
         // 모든 이벤트 리스너 정리
         document.removeEventListener('mousemove', updateCursorPosition);
         document.removeEventListener('mouseup', dragEnd);
         document.removeEventListener('mouseleave', dragEnd);
-        swiperElement.removeEventListener('mousedown', dragStart);
+        if (swiperElement) {
+          swiperElement.removeEventListener('mousedown', dragStart);
+        }
       };
     }
   }, []);
@@ -407,9 +887,8 @@ export default function HomePage() {
                 data-images-sequence-length="127"
               >
                 <canvas
-                  width="1520"
-                  height="920"
-                  style={{ width: '1519px', height: '919px' }}
+                  id="c-reveal-canvas"
+                  className="c-reveal-canvas"
                 ></canvas>
               </div>
             </div>
@@ -1468,18 +1947,22 @@ export default function HomePage() {
               <ul
                 className="c-stacking_list"
                 data-stacking="list"
-                style={{
-                  '--total-height': '2765px',
-                  '--negative-offset': '-10px',
-                }}
+                style={
+                  {
+                    // '--total-height': '2765px',
+                    // '--negative-offset': '-10px',
+                  }
+                }
               >
                 <li
                   className="c-stacking_item 160"
                   data-stacking="item"
-                  style={{
-                    '--position-top': '0px',
-                    '--area-height': '2765px',
-                  }}
+                  style={
+                    {
+                      // '--position-top': '0px',
+                      // '--area-height': '2765px',
+                    }
+                  }
                 >
                   <div className="c-stacking_area">
                     <div
@@ -1585,10 +2068,12 @@ export default function HomePage() {
                 <li
                   className="c-stacking_item 139"
                   data-stacking="item"
-                  style={{
-                    '--position-top': '94px',
-                    '--area-height': '2212px',
-                  }}
+                  style={
+                    {
+                      // '--position-top': '94px',
+                      // '--area-height': '2212px',
+                    }
+                  }
                 >
                   <div className="c-stacking_area">
                     <div
@@ -1694,10 +2179,12 @@ export default function HomePage() {
                 <li
                   className="c-stacking_item 152"
                   data-stacking="item"
-                  style={{
-                    '--position-top': '188px',
-                    '--area-height': '1659px',
-                  }}
+                  style={
+                    {
+                      // '--position-top': '188px',
+                      // '--area-height': '1659px',
+                    }
+                  }
                 >
                   <div className="c-stacking_area">
                     <div
@@ -1803,10 +2290,12 @@ export default function HomePage() {
                 <li
                   className="c-stacking_item 159"
                   data-stacking="item"
-                  style={{
-                    '--position-top': '282px',
-                    '--area-height': '1106px',
-                  }}
+                  style={
+                    {
+                      // '--position-top': '282px',
+                      // '--area-height': '1106px',
+                    }
+                  }
                 >
                   <div className="c-stacking_area">
                     <div
@@ -1916,10 +2405,12 @@ export default function HomePage() {
                   data-scroll-position="end,end"
                   data-scroll-offset="0,0"
                   data-scroll-event-progress="stackingProgress"
-                  style={{
-                    '--position-top': '376px',
-                    '--area-height': '553px',
-                  }}
+                  style={
+                    {
+                      // '--position-top': '376px',
+                      // '--area-height': '553px',
+                    }
+                  }
                 >
                   <div className="c-stacking_area">
                     <div
