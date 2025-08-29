@@ -424,7 +424,7 @@ export default function HomePage() {
       trigger: '.c-tabs',
       start: 'top top',
       end: 'bottom center',
-      markers: true,
+      // markers: true,
       onEnter: () => {},
     });
   }, []);
@@ -6496,7 +6496,7 @@ export default function HomePage() {
                               alt=""
                               // width="155"
                               // height="179"
-                              src="/media/blockquote/amber_logo_bw_long.webp"
+                              src="/images/amber_logo_bw_long.webp"
                               loading="lazy"
                             />
                           </div>
@@ -6562,7 +6562,7 @@ export default function HomePage() {
                           translate: 'none',
                           rotate: 'none',
                           scale: 'none',
-                          transform: 'translate(0px, 100%)',
+                          // transform: 'translate(0px, 100%)',
                         }}
                       >
                         <span>We</span>
@@ -6577,7 +6577,7 @@ export default function HomePage() {
                           translate: 'none',
                           rotate: 'none',
                           scale: 'none',
-                          transform: 'translate(-1em, 100%)',
+                          // transform: 'translate(-1em, 100%)',
                         }}
                       >
                         <span className="c-push-project_title_icon">
@@ -6602,7 +6602,7 @@ export default function HomePage() {
                           translate: 'none',
                           rotate: 'none',
                           scale: 'none',
-                          transform: 'translate(0px, 100%)',
+                          // transform: 'translate(0px, 100%)',
                         }}
                       >
                         <span>Systems</span>
@@ -6616,7 +6616,7 @@ export default function HomePage() {
                           translate: 'none',
                           rotate: 'none',
                           scale: 'none',
-                          transform: 'translate(0px, 100%)',
+                          // transform: 'translate(0px, 100%)',
                         }}
                       >
                         <span>Fwrd</span>
@@ -6705,7 +6705,7 @@ export default function HomePage() {
                   alt=""
                   // width="1920"
                   // height="1080"
-                  src="/static/images/footer.jpg"
+                  src="/images/footer.jpg"
                   loading="lazy"
                 />
               </picture>
