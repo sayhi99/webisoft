@@ -31,6 +31,7 @@ export default function Header() {
       lenis.destroy();
     };
   }, []);
+
   useEffect(() => {
     const html = document.querySelector('html');
     const menu = document.querySelector('.c-menu');

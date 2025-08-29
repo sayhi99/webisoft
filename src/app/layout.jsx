@@ -1,5 +1,7 @@
 import '@/app/globals.css';
+import 'aos/dist/aos.css'; // AOS CSS 추가
 import Header from './components/layout/header';
+import Footer from './components/layout/footer';
 
 export const metadata = {
   icons: {
@@ -22,6 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

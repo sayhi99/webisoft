@@ -33,7 +33,7 @@ export default function HomePage() {
           // 원본 기본값과 동일하게 해석
           this.attrs = {
             scrollOffset: el.dataset.scrollOffset ?? '0,0',
-            scrollPosition: el.dataset.scrollPosition ?? 'start,end',
+            scrollPosition: el.dataset.scrollPosition ?? 'top,bottom',
             scrollIgnoreFold: el.dataset.scrollIgnoreFold != null,
           };
           this.metrics = { bcr: null, offsetStart: 0, offsetEnd: 0 };
@@ -191,6 +191,245 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
+    // is-invew 추가
+    (() => {
+      const vp = () => ({ w: window.innerWidth, h: window.innerHeight });
+      const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+
+      class ScrollEl {
+        constructor(el) {
+          this.el = el;
+
+          // 원본 기본값/해석 로직
+          this.attrs = {
+            scrollClass: el.dataset.scrollClass ?? 'is-inview',
+            scrollOffset: el.dataset.scrollOffset ?? '0,0',
+            scrollPosition: el.dataset.scrollPosition ?? 'start,end',
+            scrollRepeat: el.hasAttribute('data-scroll-repeat'),
+            scrollCssProgress: el.hasAttribute('data-scroll-css-progress'),
+            scrollIgnoreFold: el.hasAttribute('data-scroll-ignore-fold'),
+            // 선택: data-scroll-call="eventName" → enter/leave 시 CustomEvent 발행
+            scrollCall: el.dataset.scrollCall ?? null,
+          };
+
+          this.metrics = { bcr: null, offsetStart: 0, offsetEnd: 0 };
+          this.intersection = { start: 0, end: 0 };
+          this.isInview = false;
+          this.isInFold = false;
+          this.lastProgress = null;
+
+          this._resize();
+        }
+
+        _resize() {
+          this.metrics.bcr = this.el.getBoundingClientRect();
+          this._computeMetrics();
+          this._computeIntersection();
+        }
+
+        _computeMetrics() {
+          const { top, left, height, width } = this.metrics.bcr;
+          const vertical = true;
+          const vh = vp().h;
+          const scroll = vertical ? window.scrollY : window.scrollX;
+          const primaryPos = vertical ? top : left;
+          const primarySize = vertical ? height : width;
+
+          this.metrics.offsetStart = scroll + primaryPos;
+          this.metrics.offsetEnd = this.metrics.offsetStart + primarySize;
+
+          // fold 처리(원본과 동일 아이디어)
+          this.isInFold =
+            this.metrics.offsetStart < vh && !this.attrs.scrollIgnoreFold;
+        }
+
+        _computeIntersection() {
+          const vertical = true;
+          const view = vertical ? vp().h : vp().w;
+          const size = vertical
+            ? this.metrics.bcr.height
+            : this.metrics.bcr.width;
+
+          const [offA, offB] = (this.attrs.scrollOffset || '0,0')
+            .split(',')
+            .map((s) => (s ?? '0').trim());
+
+          const parseOff = (val) => {
+            if (!val) return 0;
+            if (val.endsWith('%')) return view * (parseInt(val, 10) / 100);
+            const n = parseInt(val, 10);
+            return isNaN(n) ? 0 : n;
+          };
+          const a = parseOff(offA);
+          const c = parseOff(offB);
+
+          let [posStart, posEnd] = (this.attrs.scrollPosition || 'start,end')
+            .split(',')
+            .map((s) => (s ?? '').trim());
+
+          if (this.isInFold) posStart = 'fold';
+
+          // start 지점
+          switch (posStart) {
+            case 'middle':
+              this.intersection.start =
+                this.metrics.offsetStart - view + a + 0.5 * size;
+              break;
+            case 'end':
+              this.intersection.start =
+                this.metrics.offsetStart - view + a + size;
+              break;
+            case 'fold':
+              this.intersection.start = 0;
+              break;
+            case 'start':
+            default:
+              this.intersection.start = this.metrics.offsetStart - view + a;
+          }
+
+          // end 지점
+          switch (posEnd) {
+            case 'start':
+              this.intersection.end = this.metrics.offsetStart - c;
+              break;
+            case 'middle':
+              this.intersection.end = this.metrics.offsetStart - c + 0.5 * size;
+              break;
+            case 'end':
+            default:
+              this.intersection.end = this.metrics.offsetStart - c + size;
+          }
+
+          // end ≤ start 보호
+          // end ≤ start 보호(진행 구간을 충분히 확보)
+          if (this.intersection.end <= this.intersection.start) {
+            switch (posEnd) {
+              case 'middle':
+                this.intersection.end = this.intersection.start + 0.5 * size;
+                break;
+              case 'end':
+                // 요소 높이만큼 구간 확보 → 스크롤에 따라 0→1로 부드럽게 증가
+                this.intersection.end = this.intersection.start + size;
+                break;
+              case 'start':
+              default:
+                // 최소 1px만 확보(스타트 기준일 때)
+                this.intersection.end = this.intersection.start + 1;
+                break;
+            }
+          }
+        }
+
+        _nearestBoundaryFrom(scroll) {
+          const { start, end } = this.intersection;
+          return Math.abs(scroll - start) <= Math.abs(scroll - end)
+            ? 'start'
+            : 'end';
+        }
+
+        setInview() {
+          if (this.isInview) return;
+          this.isInview = true;
+          this.el.classList.add(this.attrs.scrollClass);
+
+          if (this.attrs.scrollCall) {
+            const from = this._nearestBoundaryFrom(window.scrollY);
+            window.dispatchEvent(
+              new CustomEvent(this.attrs.scrollCall, {
+                detail: { target: this.el, way: 'enter', from },
+              })
+            );
+          }
+        }
+
+        setOutOfView() {
+          // 원본: repeat가 없으면 out 시 제거하지 않음(1회성)
+          if (!this.isInview || !this.attrs.scrollRepeat) return;
+          this.isInview = false;
+          this.el.classList.remove(this.attrs.scrollClass);
+
+          if (this.attrs.scrollCall) {
+            const from = this._nearestBoundaryFrom(window.scrollY);
+            window.dispatchEvent(
+              new CustomEvent(this.attrs.scrollCall, {
+                detail: { target: this.el, way: 'leave', from },
+              })
+            );
+          }
+        }
+
+        updateProgress() {
+          const scroll = window.scrollY; // 수직 기준
+          const { start, end } = this.intersection;
+          const raw = (scroll - start) / (end - start);
+          const p = clamp01(raw);
+
+          if (p !== this.lastProgress) {
+            this.lastProgress = p;
+
+            // --progress 갱신(선택적으로)
+            if (this.attrs.scrollCssProgress) {
+              this.el.style.setProperty('--progress', String(p));
+            }
+
+            // inview 토글 로직(원본과 동일 조건)
+            if (p > 0 && p < 1) this.setInview();
+            if (p === 0 || p === 1) this.setOutOfView();
+          }
+        }
+      }
+
+      // 대상: data-scroll 요소 전부(진행률은 data-scroll-css-progress가 있는 것만 --progress 반영)
+      const nodes = Array.from(document.querySelectorAll('[data-scroll]'));
+      const items = nodes.map((el) => new ScrollEl(el));
+
+      const recalcAll = () => {
+        items.forEach((it) => it._resize());
+        tick();
+      };
+
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(recalcAll).catch(() => {});
+      }
+
+      window.addEventListener(
+        'resize',
+        () => {
+          cancelAnimationFrame(recalcAll._rafId);
+          recalcAll._rafId = requestAnimationFrame(recalcAll);
+        },
+        { passive: true }
+      );
+
+      let ticking = false;
+      const tick = () => {
+        ticking = false;
+        items.forEach((it) => it.updateProgress());
+      };
+      const onScroll = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(tick);
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // 초기 1회
+      recalcAll();
+    })();
+  }, []);
+
+  useEffect(() => {
+    ScrollTrigger.create({
+      trigger: '.c-tabs',
+      start: 'top top',
+      end: 'bottom center',
+      markers: true,
+      onEnter: () => {},
+    });
+  }, []);
+
+  useEffect(() => {
     // 이미지 시퀀스
 
     const canvas = document.querySelector('.c-reveal-canvas');
@@ -240,7 +479,7 @@ export default function HomePage() {
 
   useEffect(() => {
     (() => {
-      // 원본과 동일한 상수
+      // stacking code
       class Stacking {
         static HEADER_MARGIN = 60;
 
@@ -345,19 +584,19 @@ export default function HomePage() {
             this.$items[index].classList.add('is-active');
           }
 
-          // 이전 아이템들은 stacked 클래스 추가 (쌓인 상태)
-          for (let i = 0; i < index; i++) {
-            if (this.$items[i]) {
-              this.$items[i].classList.add('is-stacked');
-            }
-          }
+          // // 이전 아이템들은 stacked 클래스 추가 (쌓인 상태)
+          // for (let i = 0; i < index; i++) {
+          //   if (this.$items[i]) {
+          //     this.$items[i].classList.add('is-stacked');
+          //   }
+          // }
 
-          // 이후 아이템들은 stacked 클래스 제거
-          for (let i = index + 1; i < this.$items.length; i++) {
-            if (this.$items[i]) {
-              this.$items[i].classList.remove('is-stacked');
-            }
-          }
+          // // 이후 아이템들은 stacked 클래스 제거
+          // for (let i = index + 1; i < this.$items.length; i++) {
+          //   if (this.$items[i]) {
+          //     this.$items[i].classList.remove('is-stacked');
+          //   }
+          // }
         }
 
         onResize() {
@@ -370,19 +609,24 @@ export default function HomePage() {
 
         onLastStackingProgress(e) {
           const { target, progress } = (e && e.detail) || {};
-          if (!target || typeof progress !== 'number') return;
-          if (this.el.contains(target)) {
-            // viewport 높이
-            this.wHeight =
-              window.innerHeight || document.documentElement.clientHeight || 0;
-            const offset = this.wHeight * progress * -1;
-            if (this.$list) {
-              this.$list.style.setProperty(
-                '--negative-extra-offset',
-                `${offset}px`
-              );
-            }
-          }
+          if (!target || typeof progress !== 'number' || !this.$list) return;
+
+          // 1) 마지막 스택 아이템에서 온 이벤트만 처리
+          const lastItem = this.$items[this.$items.length - 1];
+          if (!lastItem || !lastItem.contains(target)) return;
+
+          // 2) 진행률 0~1로 고정 + 디바이스 픽셀 기준 반올림
+          const p = Math.max(0, Math.min(1, progress));
+          const vh =
+            window.innerHeight || document.documentElement.clientHeight || 0;
+
+          // 원본과 동일한 방정식(위로 밀기 = 음수)
+          const offset = -Math.round(vh * p);
+
+          this.$list.style.setProperty(
+            '--negative-extra-offset',
+            `${offset}px`
+          );
         }
 
         resize() {
@@ -727,9 +971,7 @@ export default function HomePage() {
                       <div className="c-lines_wrapper" data-lines="wrapper">
                         <canvas
                           className="c-lines_canvas"
-                          width="1488"
-                          height="460"
-                          style={{ width: '1487px', height: '457px' }}
+                          // style={{ width: '1487px', height: '457px' }}
                         ></canvas>
                       </div>
                     </div>
@@ -1939,9 +2181,10 @@ export default function HomePage() {
           <div className="custom-block u-padding-big-top u-padding-big-bottom">
             <div
               className="c-stacking"
-              data-module-stacking="m94"
+              data-module-stacking="m10"
               data-scroll=""
-              data-scroll-offset="100%,100%"
+              data-scroll-position="top,top"
+              data-scroll-offset="100%,200%"
               data-scroll-css-progress=""
             >
               <ul
@@ -2719,8 +2962,8 @@ export default function HomePage() {
                                       <img
                                         className="c-image_img"
                                         alt="Startups"
-                                        width="311"
-                                        height="465"
+                                        // width="311"
+                                        // height="465"
                                         src="/media/progress-carousel/pexels-cottonbro-8721327_2.webp"
                                         loading="lazy"
                                       />
@@ -2816,8 +3059,8 @@ export default function HomePage() {
                                       <img
                                         className="c-image_img"
                                         alt="Enterprises"
-                                        width="311"
-                                        height="465"
+                                        // width="311"
+                                        // height="465"
                                         src="/media/progress-carousel/pexels-wal_-172619-2838227-22776627_1_aMw44Bg.webp"
                                         loading="lazy"
                                       />
@@ -2914,8 +3157,8 @@ export default function HomePage() {
                                         className="c-image_img"
                                         alt="Web"
                                         companies=""
-                                        width="311"
-                                        height="465"
+                                        // width="311"
+                                        // height="465"
                                         src="/media/progress-carousel/pexels-tima-miroshnichenko-7567529_1.webp"
                                         loading="lazy"
                                       />
@@ -3118,6 +3361,7 @@ export default function HomePage() {
                                 data-scroll-offset="20%,20%"
                                 data-scramble-appear=""
                                 data-scroll-call="scrambleText"
+                                // data-aos="fade-in"
                               >
                                 <li
                                   className="default"
@@ -6250,8 +6494,8 @@ export default function HomePage() {
                             <img
                               className="c-image_img"
                               alt=""
-                              width="155"
-                              height="179"
+                              // width="155"
+                              // height="179"
                               src="/media/blockquote/amber_logo_bw_long.webp"
                               loading="lazy"
                             />
@@ -6288,8 +6532,8 @@ export default function HomePage() {
                   <img
                     className="c-image_img"
                     alt=""
-                    width="2160"
-                    height="1664"
+                    // width="2160"
+                    // height="1664"
                     src="/media/blockquote/blockquote_jDGMjsK-min.webp"
                     loading="lazy"
                   />
@@ -6459,8 +6703,8 @@ export default function HomePage() {
                 <img
                   className="c-image_img"
                   alt=""
-                  width="1920"
-                  height="1080"
+                  // width="1920"
+                  // height="1080"
                   src="/static/images/footer.jpg"
                   loading="lazy"
                 />

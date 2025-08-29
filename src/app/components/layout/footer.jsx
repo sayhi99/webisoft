@@ -1,9 +1,20 @@
+'use client';
+import { useEffect } from 'react';
+import AOS from 'aos'; // AOS import 추가
+import 'aos/dist/aos.css'; // AOS CSS 추가
+
 export default function Footer() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+    });
+  }, []);
   return (
     <>
-    
-
-<footer class="c-footer">
+      {/* <footer class="c-footer">
 <div class="o-container">
 <div class="c-footer_inner">
 <div class="c-footer_top || o-grid -col-2 -col-3@from-small -col-4@from-large -gutters">
@@ -399,7 +410,7 @@ Miami Florida<br>
 </div>
 </div>
 </div>
-</footer>
+</footer> */}
     </>
-  )
+  );
 }

@@ -138,6 +138,7 @@ html {
  */
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 /**
@@ -10150,6 +10151,7 @@ html.js-focus-visible .c-tile-subservice_link.focus-visible {
   width: 100%;
   transform: translate3d(-50%, -50%, 0);
   mix-blend-mode: multiply;
+  /* overflow: hidden; */
 }
 .c-tile-stacking_visual_media dotlottie-wc {
   position: absolute;
@@ -15098,6 +15100,10 @@ body > .hbspt-form {
   --animation-appear-duration: 0.6s;
   --animation-appear-stagger: 0.1s;
   --animation-appear-easing: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.c-stacked-list.aos-animate li.default {
+  opacity: 1;
+  transform: translateX(0);
 }
 @media (min-width: 700px) and (max-width: 1199px) {
   .c-stacked-list:not(.is-fullwidth) {

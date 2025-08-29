@@ -12,6 +12,7 @@
     "@lottiefiles/dotlottie-wc": "^0.7.2",
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@studio-freight/lenis": "^1.0.42",
+    "aos": "^2.3.4",
     "gsap": "^3.13.0",
     "next": "15.4.5",
     "react": "19.1.0",
